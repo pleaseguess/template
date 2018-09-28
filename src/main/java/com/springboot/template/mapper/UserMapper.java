@@ -1,7 +1,9 @@
 package com.springboot.template.mapper;
 
 import com.springboot.template.entity.po.User;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 

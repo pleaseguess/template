@@ -211,6 +211,47 @@
     select
       <include refid="Base_Column_List" />
     from b_user
-    where b_uuid = #{uuid,jdbcType=VARCHARE}
+    where b_uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUser" parameterType="User" resultMap="int">
+    select count(*) from b_user
+    <where>
+      <if test="id==0">
+        and b_id = #{User.b_id},
+      </if>
+      <if test="avatar==''">
+        and b_avatar = #{User.avatar},
+      </if>
+      <if test="birthday==''">
+        and b_birthday = #{User.birthday},
+      </if>
+      <if test="email==''">
+        and b_email = #{User.email},
+      </if>
+      <if test="nickname==''">
+        and b_nickname = #{User.nickname},
+      </if>
+      <if test="password==''">
+        and b_password = #{User.password},
+      </if>
+      <if test="role==''">
+        and b_role = #{User.role},
+      </if>
+      <if test="sex==''">
+        and b_sex = #{User.sex},
+      </if>
+      <if test="signature==''">
+        and b_signature = #{User.signature},
+      </if>
+      <if test="specialty==''">
+        and b_specialty = #{User.specialty},
+      </if>
+      <if test="status==''">
+        and b_status = #{User.status},
+      </if>
+      <if test="username==''">
+        and b_username = #{User.username}
+      </if>
+    </where>
   </select>
 </mapper>
