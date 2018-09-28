@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.template.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.springboot.template.entity.po.User">
+    <id column="b_id" jdbcType="INTEGER" property="id" />
+    <result column="b_uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="b_username" jdbcType="VARCHAR" property="username" />
+    <result column="b_password" jdbcType="VARCHAR" property="password" />
+    <result column="b_avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="b_nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="b_sex" jdbcType="VARCHAR" property="sex" />
+    <result column="b_specialty" jdbcType="VARCHAR" property="specialty" />
+    <result column="b_birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="b_signature" jdbcType="VARCHAR" property="signature" />
+    <result column="b_email" jdbcType="VARCHAR" property="email" />
+    <result column="b_role" jdbcType="VARCHAR" property="role" />
+    <result column="b_status" jdbcType="VARCHAR" property="status" />
+    <result column="b_creattime" jdbcType="BIGINT" property="creattime" />
+    <result column="b_updatetime" jdbcType="BIGINT" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    b_id, b_uuid, b_username, b_password, b_avatar, b_nickname, b_sex, b_specialty, b_birthday, 
+    b_signature, b_email, b_role, b_status, b_creattime, b_updatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from b_user
+    where b_id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from b_user
+    where b_id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.springboot.template.entity.po.User">
+    insert into b_user ( b_uuid, b_username,
+      b_password, b_avatar, b_nickname, 
+      b_sex, b_specialty, b_birthday, 
+      b_signature, b_email, b_role, 
+      b_status, b_creattime, b_updatetime)
+    values ( #{uuid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+      #{password,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
+      #{signature,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{creattime,jdbcType=BIGINT}, #{updatetime,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.template.entity.po.User">
+    insert into b_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        b_id,
+      </if>
+      <if test="uuid != null">
+        b_uuid,
+      </if>
+      <if test="username != null">
+        b_username,
+      </if>
+      <if test="password != null">
+        b_password,
+      </if>
+      <if test="avatar != null">
+        b_avatar,
+      </if>
+      <if test="nickname != null">
+        b_nickname,
+      </if>
+      <if test="sex != null">
+        b_sex,
+      </if>
+      <if test="specialty != null">
+        b_specialty,
+      </if>
+      <if test="birthday != null">
+        b_birthday,
+      </if>
+      <if test="signature != null">
+        b_signature,
+      </if>
+      <if test="email != null">
+        b_email,
+      </if>
+      <if test="role != null">
+        b_role,
+      </if>
+      <if test="status != null">
+        b_status,
+      </if>
+      <if test="creattime != null">
+        b_creattime,
+      </if>
+      <if test="updatetime != null">
+        b_updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="specialty != null">
+        #{specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null">
+        #{creattime,jdbcType=BIGINT},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.template.entity.po.User">
+    update b_user
+    <set>
+      <if test="uuid != null">
+        b_uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        b_username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        b_password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        b_avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        b_nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        b_sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="specialty != null">
+        b_specialty = #{specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        b_birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        b_signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        b_email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        b_role = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        b_status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null">
+        b_creattime = #{creattime,jdbcType=BIGINT},
+      </if>
+      <if test="updatetime != null">
+        b_updatetime = #{updatetime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where b_id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.template.entity.po.User">
+    update b_user
+    set b_uuid = #{uuid,jdbcType=VARCHAR},
+      b_username = #{username,jdbcType=VARCHAR},
+      b_password = #{password,jdbcType=VARCHAR},
+      b_avatar = #{avatar,jdbcType=VARCHAR},
+      b_nickname = #{nickname,jdbcType=VARCHAR},
+      b_sex = #{sex,jdbcType=VARCHAR},
+      b_specialty = #{specialty,jdbcType=VARCHAR},
+      b_birthday = #{birthday,jdbcType=VARCHAR},
+      b_signature = #{signature,jdbcType=VARCHAR},
+      b_email = #{email,jdbcType=VARCHAR},
+      b_role = #{role,jdbcType=VARCHAR},
+      b_status = #{status,jdbcType=VARCHAR},
+      b_creattime = #{creattime,jdbcType=BIGINT},
+      b_updatetime = #{updatetime,jdbcType=BIGINT}
+    where b_id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByUUID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+      <include refid="Base_Column_List" />
+    from b_user
+    where b_uuid = #{uuid,jdbcType=VARCHARE}
+  </select>
+</mapper>
