@@ -24,4 +24,14 @@ public class UserServiceImpl implements UserService {
     public User findUserByUUID(String uuid) {
         return userMapper.selectByUUID(uuid);
     }
+
+    @Override
+    public int selectByUser(User user) {
+        return userMapper.selectByUser(user);
+    }
+
+    @Override
+    public User selectByPrimaryKey(Integer id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
 }

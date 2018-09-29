@@ -28,8 +28,6 @@
 		<level name="Maven: org.springframework.boot:spring-boot:1.5.16.BUILD-SNAPSHOT" value="project"/>
 		<level name="Maven: org.springframework.boot:spring-boot-autoconfigure:1.5.16.BUILD-SNAPSHOT" value="project"/>
 		<level name="Maven: org.springframework.boot:spring-boot-starter-logging:1.5.16.BUILD-SNAPSHOT" value="project"/>
-		<level name="Maven: ch.qos.logback:logback-classic:1.1.11" value="project"/>
-		<level name="Maven: ch.qos.logback:logback-core:1.1.11" value="project"/>
 		<level name="Maven: org.slf4j:jul-to-slf4j:1.7.25" value="project"/>
 		<level name="Maven: org.slf4j:log4j-over-slf4j:1.7.25" value="project"/>
 		<level name="Maven: org.yaml:snakeyaml:1.17" value="project"/>
@@ -48,6 +46,9 @@
 		<level name="Maven: org.springframework:spring-aop:4.3.19.RELEASE" value="project"/>
 		<level name="Maven: org.springframework:spring-webmvc:4.3.19.RELEASE" value="project"/>
 		<level name="Maven: org.springframework:spring-expression:4.3.19.RELEASE" value="project"/>
+		<level name="Maven: org.slf4j:slf4j-api:1.7.25" value="project"/>
+		<level name="Maven: ch.qos.logback:logback-core:1.1.11" value="project"/>
+		<level name="Maven: ch.qos.logback:logback-classic:1.1.11" value="project"/>
 		<level name="Maven: org.springframework:spring-context-support:4.3.19.RELEASE" value="project"/>
 		<level name="Maven: org.springframework:spring-beans:4.3.19.RELEASE" value="project"/>
 		<level name="Maven: org.springframework:spring-context:4.3.19.RELEASE" value="project"/>
@@ -55,7 +56,6 @@
 		<level name="Maven: org.quartz-scheduler:quartz-jobs:2.2.1" value="project"/>
 		<level name="Maven: org.quartz-scheduler:quartz:2.2.1" value="project"/>
 		<level name="Maven: c3p0:c3p0:0.9.1.1" value="project"/>
-		<level name="Maven: org.slf4j:slf4j-api:1.7.25" value="project"/>
 		<level name="Maven: io.springfox:springfox-swagger2:2.4.0" value="project"/>
 		<level name="Maven: io.swagger:swagger-annotations:1.5.6" value="project"/>
 		<level name="Maven: io.swagger:swagger-models:1.5.6" value="project"/>

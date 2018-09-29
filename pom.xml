@@ -30,6 +30,21 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- logback配置 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+
 		<!-- quartz依赖 -->
 		<dependency>
 			<groupId>org.springframework</groupId> <!-- spring对各种框架的支持 -->
@@ -83,7 +98,8 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.19</version>
 		</dependency>
-		<!-- redis测试使用 -->
+
+		<!-- redis使用 -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
@@ -94,8 +110,6 @@
 			<artifactId>javatuples</artifactId>
 			<version>1.2</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

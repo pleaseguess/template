@@ -8,4 +8,6 @@ import com.springboot.template.entity.po.User;
 public interface UserService {
     int addUser(User user);
     User findUserByUUID(String uuid);
+    int selectByUser(User user);
+    User selectByPrimaryKey(Integer id);
 }

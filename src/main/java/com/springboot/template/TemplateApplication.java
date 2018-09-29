@@ -7,9 +7,8 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-//@EnableSwagger2				/*启动swagger注解*/
 @ServletComponentScan
-@MapperScan("com.springboot.template")
+@MapperScan("com.springboot.template.mapper")
 public class TemplateApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TemplateApplication.class, args);

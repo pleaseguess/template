@@ -22,12 +22,14 @@
     b_id, b_uuid, b_username, b_password, b_avatar, b_nickname, b_sex, b_specialty, b_birthday, 
     b_signature, b_email, b_role, b_status, b_creattime, b_updatetime
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from b_user
     where b_id = #{id,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from b_user
     where b_id = #{id,jdbcType=INTEGER}
@@ -141,7 +143,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.template.entity.po.User">
+  <update id="updateByUser" parameterType="com.springboot.template.entity.po.User">
     update b_user
     <set>
       <if test="uuid != null">
@@ -213,44 +215,53 @@
     from b_user
     where b_uuid = #{uuid,jdbcType=VARCHAR}
   </select>
-  <select id="selectByUser" parameterType="User" resultMap="int">
+  <select id="selectByUser" parameterType="User" resultType="java.lang.Integer">
     select count(*) from b_user
     <where>
-      <if test="id==0">
-        and b_id = #{User.b_id},
+      <if test="id != null">
+        and b_id = #{id,jdbcType=INTEGER}
       </if>
-      <if test="avatar==''">
-        and b_avatar = #{User.avatar},
+      <if test="uuid != null">
+        and b_uuid =#{uuid,jdbcType=VARCHAR}
       </if>
-      <if test="birthday==''">
-        and b_birthday = #{User.birthday},
+      <if test="username != null">
+        and b_username =#{username,jdbcType=VARCHAR}
       </if>
-      <if test="email==''">
-        and b_email = #{User.email},
+      <if test="password != null">
+        and b_password = #{password,jdbcType=VARCHAR}
       </if>
-      <if test="nickname==''">
-        and b_nickname = #{User.nickname},
+      <if test="avatar != null">
+        and b_avatar = #{avatar,jdbcType=VARCHAR}
       </if>
-      <if test="password==''">
-        and b_password = #{User.password},
+      <if test="nickname != null">
+        and b_nickname = #{nickname,jdbcType=VARCHAR}
       </if>
-      <if test="role==''">
-        and b_role = #{User.role},
+      <if test="sex != null">
+        and b_sex = #{sex,jdbcType=VARCHAR}
       </if>
-      <if test="sex==''">
-        and b_sex = #{User.sex},
+      <if test="specialty != null">
+        and b_specialty = #{specialty,jdbcType=VARCHAR}
       </if>
-      <if test="signature==''">
-        and b_signature = #{User.signature},
+      <if test="birthday != null">
+        and b_birthday = #{birthday,jdbcType=VARCHAR}
       </if>
-      <if test="specialty==''">
-        and b_specialty = #{User.specialty},
+      <if test="signature != null">
+        and b_signature = #{signature,jdbcType=VARCHAR}
       </if>
-      <if test="status==''">
-        and b_status = #{User.status},
+      <if test="email != null">
+        and b_email = #{email,jdbcType=VARCHAR}
       </if>
-      <if test="username==''">
-        and b_username = #{User.username}
+      <if test="role != null">
+        and b_role = #{role,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        and b_status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="creattime != null">
+        and b_creattime = #{creattime,jdbcType=BIGINT}
+      </if>
+      <if test="updatetime != null">
+        and b_updatetime = #{updatetime,jdbcType=BIGINT}
       </if>
     </where>
   </select>
