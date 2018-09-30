@@ -1,15 +1,21 @@
 package com.springboot.template.controller;
 
+import com.springboot.template.advice.ErrorCode;
+import com.springboot.template.advice.RestResult;
+import com.springboot.template.advice.RestResultGenerator;
 import com.springboot.template.entity.po.User;
 import com.springboot.template.service.UserService;
 import com.springboot.template.util.GetValue;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.concurrent.LinkedTransferQueue;
 
 
 /**
@@ -21,13 +27,24 @@ import java.util.Map;
 @Api("UserController相关api")
 public class UserController extends BaseController{
 
+    final static Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
+
+    @ApiOperation(value="测试异常的用法",notes = "测试异常时候被拦截")
+    @RequestMapping(value="/error" , method = RequestMethod.GET)
+    public RestResult<String> getError() throws ClassNotFoundException {
+        //throw new ClassNotFoundException();
+        return RestResultGenerator.genErrorResult(ErrorCode.ILLEGAL_PARAMS);
+    }
+
 
     @ApiOperation(value="根据uuid获取用户信息",notes = "查询数据库中某个用户的信息")
     @ApiImplicitParam(name="id",value="id",required=true,dataType="String",paramType = "path")
     @RequestMapping(value="/{id}" ,  method = RequestMethod.GET)
     public User getUser(@PathVariable Integer id){
+        logger.debug("该用户信息如下");
         return userService.selectByPrimaryKey(id);
     }
 
@@ -38,7 +55,7 @@ public class UserController extends BaseController{
         User user = new User();
         user.setUsername(GetValue.getString(reqMap.get("username")));
         int count = userService.selectByUser(user);
-
+        logger.debug("该用户可以注册");
         if(count == 0){
             user.setAvatar(GetValue.getString(reqMap.get("avatar")));
             user.setBirthday(GetValue.getString(reqMap.get("birthday")));
@@ -56,6 +73,7 @@ public class UserController extends BaseController{
             user.setUuid(getUUID());
             int successCount = userService.addUser(user);
             if(successCount > 0){
+                logger.debug("该用户以注册成功");
                 return user;
             }else{
                 return null;
