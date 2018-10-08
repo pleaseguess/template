@@ -12,5 +12,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class TemplateApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TemplateApplication.class, args);
+		System.out.println("http://localhost:8888/swagger-ui.html");
 	}
 }

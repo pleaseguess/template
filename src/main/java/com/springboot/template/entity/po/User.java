@@ -2,7 +2,7 @@ package com.springboot.template.entity.po;
 
 import org.apache.ibatis.type.Alias;
 
-@Alias("User")
+
 public class User {
     private Integer id;
 
